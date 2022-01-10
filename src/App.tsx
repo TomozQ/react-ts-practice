@@ -17,10 +17,14 @@ const App: React.FunctionComponent = () => {
       {id: Math.random().toString(), text: text}
     ])
   }
+
+  const todoDeleteHandlar = (todoId: string) => {
+    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== todoId))
+  }
   return (
     <div className="App">
       <NewTodo onAddTodo={todoAddHandler}/>
-      <TodoList items={todos} />
+      <TodoList items={todos} onDeleteTodo={todoDeleteHandlar} />
     </div>
   );
 }
